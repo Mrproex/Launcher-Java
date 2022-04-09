@@ -1,10 +1,11 @@
 package proex.launcher.main;
 
-public class Program {
+import javax.swing.*;
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		System.out.println("YEET");
+public class Program 
+{
+	public static void main(String[] args) 
+	{
+		Components comp = new Components();	
 	}
-
 }
