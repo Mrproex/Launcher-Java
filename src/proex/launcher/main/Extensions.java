@@ -15,9 +15,9 @@ public class Extensions {
 		  private static final long serialVersionUID = 1L;
 		private Image backgroundImage;
 
-		  public JPanelWithBackground(String url) {
-		    try {
-				backgroundImage = ImageIO.read(new URL(url));
+		  public JPanelWithBackground(String url, int width, int height) {
+		    try {		    	
+				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_DEFAULT);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,9 +37,9 @@ public class Extensions {
 		  private static final long serialVersionUID = 1L;
 		private Image backgroundImage;
 
-		  public JButtonWithBackground(String url) {
+		  public JButtonWithBackground(String url, int width, int height) {
 		    try {
-				backgroundImage = ImageIO.read(new URL(url));
+				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_DEFAULT);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
