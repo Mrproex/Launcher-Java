@@ -2,7 +2,6 @@ package proex.launcher.main;
 
 public class News implements Runnable 
 {
-	int i = 0;
     public void run() 
     {
     	while (true) {
@@ -14,16 +13,19 @@ public class News implements Runnable
     	    		Components.news0Button.setVisible(true);
     	    		Components.news1Button.setVisible(false);
     	    		Components.news2Button.setVisible(false);
+    	    		Components.newsLabel.setText("NEWS0");
     	    		break;
     	    	case 1:
     	    		Components.news0Button.setVisible(false);
     	    		Components.news1Button.setVisible(true);
     	    		Components.news2Button.setVisible(false);
+    	    		Components.newsLabel.setText("NEWS1");
     	    		break;
     	    	case 2:
     	    		Components.news0Button.setVisible(false);
     	    		Components.news1Button.setVisible(false);
     	    		Components.news2Button.setVisible(true);
+    	    		Components.newsLabel.setText("NEWS2");
     	    		break;
             	}
         		for (int j = 0; j != 7; j++) {
