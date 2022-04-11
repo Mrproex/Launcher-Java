@@ -2,17 +2,27 @@ package proex.launcher.main;
 
 import java.awt.Color;
 
+import javax.swing.BorderFactory;
 import javax.swing.UIManager;
 
 public class Program 
 {
 	public static void main(String[] args) 
-	{
-	    UIManager.put("newsPrgBar.background", Color.BLACK); //color of the background
-	    UIManager.put("newsPrgBar.foreground", Color.RED);  //color of progress bar
-	    UIManager.put("newsPrgBar.selectionBackground",Color.YELLOW);  //color of percentage counter on black background
-	    UIManager.put("newsPrgBar.selectionForeground",Color.BLUE);  //color of percentage counter on red background
-	    
-		Components comp = new Components();	
+	{	    
+		String os = System.getProperty("os.name");
+		
+		if (os.contains("Mac")) {
+	        UIManager.put("ProgressBar.repaintInterval", 100);
+	        UIManager.put("ProgressBar.border", BorderFactory.createLineBorder(Color.white, 1));
+	        
+	        UIManager.put("ProgressBar.selectionBackground", Color.red);
+			UIManager.put("ProgressBar.selectionForeground", Color.red);
+			UIManager.put("ProgressBar.foreground", Color.red);
+			UIManager.put("ProgressBar.background", Color.red);
+		}
+		
+		var cp = new Components();	
+		
+		System.out.println(cp.mainPrgBar.getForeground());
 	}
 }

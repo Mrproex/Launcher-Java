@@ -1,14 +1,13 @@
 package proex.launcher.main;
 
 import java.awt.Color;
-import java.awt.Desktop;
-import java.awt.Event;
 import java.awt.Font;
-import java.awt.Image;
 import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
+import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Scanner;
 
 import javax.swing.*;
 import javax.swing.text.StyledEditorKit.FontFamilyAction;
@@ -18,7 +17,20 @@ import proex.launcher.main.Extensions.JPanelWithBackground;
 
 public class Components 
 {
+	public static String news = null;
+	public static String links = null;
+	
 	public Components() {
+		try {
+			Utilities.HttpDownloadUtility.downloadFile("http://127.0.0.1/Dofus/Launcher/news.txt", "./");
+			Utilities.HttpDownloadUtility.downloadFile("http://127.0.0.1/Dofus/Launcher/links.txt", "./");			
+			news = Files.readString(Paths.get("./news.txt"));
+			links = Files.readString(Paths.get("./links.txt"));
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		
 		//frame
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); 
 		frame.setResizable(false);
@@ -37,20 +49,23 @@ public class Components
 		namePanel.setOpaque(false);
 		
 		//News Buttons
+		String n0l = news.split("\n")[0].split("§")[1];
 		news0Button.setSize(350, 200);
 		news0Button.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 		news0Button.setLocation((frame.getWidth() / 2) - news0Button.getWidth() / 2, (frame.getHeight() / 2) - (news0Button.getHeight() / 2) - 10);
-		news0Button.addActionListener(e -> Listeners.reachLink("https://google.fr/"));
+		news0Button.addActionListener(e -> Listeners.reachLink(n0l));
 
+		String n1l = news.split("\n")[1].split("§")[1];
 		news1Button.setSize(350, 200);
 		news1Button.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 		news1Button.setLocation((frame.getWidth() / 2) - news0Button.getWidth() / 2, (frame.getHeight() / 2) - (news0Button.getHeight() / 2) - 10);
-		news1Button.addActionListener(e -> Listeners.reachLink("https://google.fr/"));
+		news1Button.addActionListener(e -> Listeners.reachLink(n1l));
 
+		String n2l = news.split("\n")[2].split("§")[1];
 		news2Button.setSize(350, 200);
 		news2Button.setBorder(BorderFactory.createLineBorder(Color.white, 1));
 		news2Button.setLocation((frame.getWidth() / 2) - news0Button.getWidth() / 2, (frame.getHeight() / 2) - (news0Button.getHeight() / 2) - 10);
-		news2Button.addActionListener(e -> Listeners.reachLink("https://google.fr/"));
+		news2Button.addActionListener(e -> Listeners.reachLink(n2l));
 		
 		newsPrgBar.setSize(350, 8);
 		newsPrgBar.setLocation((frame.getWidth() / 2) - news0Button.getWidth() / 2, (frame.getHeight() / 2) + ((news0Button.getHeight() / 2) - 13));
@@ -78,6 +93,12 @@ public class Components
 		discordButton.setFont(new Font("Arial", Font.BOLD, 12));
 		discordButton.addActionListener(e -> Listeners.reachLink("https://discord.gg/"));
 		
+		mainPrgBar.setSize(frame.getWidth(), 25);
+		mainPrgBar.setLocation(0, frame.getHeight() - 25);
+		mainPrgBar.setMaximum(1000);
+		mainPrgBar.setValue(350);
+		
+		frame.add(mainPrgBar);
 		frame.add(discordButton);
 		frame.add(websiteButton);
 		frame.add(newsLabel);
@@ -104,4 +125,5 @@ public class Components
 	public static JLabel newsLabel = new JLabel();
 	public static JButton websiteButton = new JButton();
 	public static JButton discordButton = new JButton();
+	public static JProgressBar mainPrgBar = new JProgressBar();
 }
