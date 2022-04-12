@@ -97,8 +97,8 @@ public class Components
 		discordButton.setFont(new Font("Arial", Font.BOLD, 12));
 		discordButton.addActionListener(e -> Listeners.ReachLink("https://discord.gg/"));
 		
-		mainPrgBar.setSize(frame.getWidth(), 25);
-		mainPrgBar.setLocation(0, frame.getHeight() - 25);
+		mainPrgBar.setSize(frame.getWidth() + 4, 25);
+		mainPrgBar.setLocation(-2, frame.getHeight() - 25);
 		mainPrgBar.setMaximum(1000);
 		mainPrgBar.setValue(350);
 		mainPrgBar.setForeground(Color.white);
