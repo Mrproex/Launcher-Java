@@ -12,17 +12,13 @@ public class Program
 		String os = System.getProperty("os.name");
 		
 		if (os.contains("Mac")) {
-	        UIManager.put("ProgressBar.repaintInterval", 100);
+	        //UIManager.put("ProgressBar.repaintInterval", 100);
 	        UIManager.put("ProgressBar.border", BorderFactory.createLineBorder(Color.white, 1));
 	        
-	        UIManager.put("ProgressBar.selectionBackground", Color.red);
-			UIManager.put("ProgressBar.selectionForeground", Color.red);
-			UIManager.put("ProgressBar.foreground", Color.red);
-			UIManager.put("ProgressBar.background", Color.red);
+			UIManager.put("ProgressBar.selectionForeground", Color.white);
+			UIManager.put("ProgressBar.foreground", Color.white);
 		}
 		
 		var cp = new Components();	
-		
-		System.out.println(cp.mainPrgBar.getForeground());
 	}
 }

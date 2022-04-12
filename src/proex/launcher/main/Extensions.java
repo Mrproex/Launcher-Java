@@ -17,7 +17,7 @@ public class Extensions {
 
 		  public JPanelWithBackground(String url, int width, int height) {
 		    try {		    	
-				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_DEFAULT);
+				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -39,7 +39,7 @@ public class Extensions {
 
 		  public JButtonWithBackground(String url, int width, int height) {
 		    try {
-				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_DEFAULT);
+				backgroundImage = ImageIO.read(new URL(url)).getScaledInstance(width, height, Image.SCALE_AREA_AVERAGING);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

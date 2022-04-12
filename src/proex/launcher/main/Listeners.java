@@ -34,7 +34,7 @@ public class Listeners {
 	     }
 	};
 	
-	static void reachLink(String link) {
+	static void ReachLink(String link) {
 		try {
 			Desktop.getDesktop().browse(new URI(link));
 		} catch (IOException e1) {
@@ -44,6 +44,10 @@ public class Listeners {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
+	}
+	
+	static void Play() {
+		
 	}
 
 }
